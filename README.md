@@ -135,9 +135,9 @@ If you use this code or outputs, please cite:
   author  = {Chowdhury, Koushik},
   title   = {Computational Stratification and Engineering Translation 
              of the PDCD1/CD2 Immune Axis in Triple-Negative Breast Cancer},
-  journal = {[Journal name]},
-  year    = {2025},
-  doi     = {[add after acceptance]}
+  journal = {[]},
+  year    = {2026},
+  doi     = {[]}
 }
 ```
 

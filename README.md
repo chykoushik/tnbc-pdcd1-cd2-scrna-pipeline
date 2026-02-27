@@ -9,6 +9,13 @@ Computational pipeline for the paper:
 
 
 ---
+## Interactive Dashboard
+
+**Live:** [https://chykoushik.github.io/tnbc-pdcd1-cd2-scrna-pipeline/tnbc_dashboard.html](https://chykoushik.github.io/tnbc-pdcd1-cd2-scrna-pipeline/tnbc_dashboard.html)
+
+Open in any browser for a full visual summary of all results including
+patient stratification, ARI/NMI validation, survival curves, LR proxy
+screen, DesignPriorityScore rankings, and bootstrap stability.
 
 ## Overview
 

@@ -83,8 +83,7 @@ bootstrap stability.
 | Source | Access |
 |--------|--------|
 | GSE176078 (scRNA-seq) | [NCBI GEO](https://ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE176078) |
-| TCGA-BRCA (bulk RNA-seq) | [UCSC Xena](https://xena.ucsc.edu/) |
-| Output CSVs | [Harvard Dataverse](https://doi.org/10.7910/DVN/XXXXXXX) |
+| Output CSVs | [Harvard Dataverse]([https://doi.org/10.7910/DVN/XXXXXXX](https://doi.org/10.7910/DVN/T7YK0O) |
 
 Primary data are not included in this repository.
 Download GSE176078 files from NCBI GEO into your Google Drive
@@ -192,5 +191,5 @@ MIT License — see `LICENSE` for details.
 
 ## Contact
 
-Koushik Chowdhury · Universität des Saarlandes
-ORCID: [0009-0007-6319-3769](https://orcid.org/0009-0007-6319-3769)
+Koushik Chowdhury, M.Sc. · Universität des Saarlandes
+

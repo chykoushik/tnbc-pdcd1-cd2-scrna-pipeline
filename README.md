@@ -83,7 +83,7 @@ bootstrap stability.
 | Source | Access |
 |--------|--------|
 | GSE176078 (scRNA-seq) | [NCBI GEO](https://ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE176078) |
-| Output CSVs | [Harvard Dataverse](https://doi.org/10.7910/DVN/T7YK0O) |
+| Output Files | [Harvard Dataverse](https://doi.org/10.7910/DVN/T7YK0O) |
 
 Primary data are not included in this repository.
 Download GSE176078 files from NCBI GEO into your Google Drive

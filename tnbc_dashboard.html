@@ -617,31 +617,35 @@ footer {
   background: var(--bg);
 }
 
-/* Image Placeholder */
+/* Images */
 .figure {
   margin: 0;
   background: var(--bg);
   border-radius: var(--radius);
-  padding: 24px;
+  padding: 16px;
   text-align: center;
 }
 
-.figure-placeholder {
-  aspect-ratio: 16/9;
-  background: linear-gradient(135deg, var(--border-light) 0%, var(--border) 100%);
+.figure img {
+  max-width: 100%;
+  height: auto;
   border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-  font-size: 14px;
-  margin-bottom: 12px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 .figure-caption {
   font-size: 12px;
   color: var(--text-muted);
   font-style: italic;
+  margin-top: 12px;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
 }
 </style>
 </head>
@@ -996,6 +1000,22 @@ footer {
       </div>
     </div>
   </div>
+  
+  <!-- Full Atlas UMAP Preview -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-title">
+        <span class="card-title-icon" style="background: #cffafe; color: #0891b2;">🗺️</span>
+        Full Atlas UMAP
+      </div>
+    </div>
+    <div class="card-body">
+      <figure class="figure">
+        <img src="images/fig_umap_leiden.png" alt="Full atlas UMAP with Leiden clusters">
+        <figcaption class="figure-caption">Figure 3a: UMAP embedding of QC-filtered cells coloured by Leiden cluster (resolution = 0.6)</figcaption>
+      </figure>
+    </div>
+  </div>
 </div>
 
 <!-- QC & ATLAS TAB -->
@@ -1006,41 +1026,25 @@ footer {
     <div class="card-header">
       <div class="card-title">
         <span class="card-title-icon" style="background: #fef3c7; color: #d97706;">📊</span>
-        QC Metrics — Before Filtering (100,064 cells, 29,733 genes)
+        QC Metrics — Before and After Filtering
       </div>
     </div>
     <div class="card-body">
-      <figure class="figure">
-        <div class="figure-placeholder">
-          [Violin plots: total_counts, n_genes_by_counts, pct_counts_mt before filtering]
-        </div>
-        <figcaption class="figure-caption">Distribution of total UMI counts, detected genes, and mitochondrial percentage per cell</figcaption>
-      </figure>
-    </div>
-  </div>
-  
-  <div class="card">
-    <div class="card-header">
-      <div class="card-title">
-        <span class="card-title-icon" style="background: #d1fae5; color: #059669;">✓</span>
-        QC Metrics — After Filtering (min_genes=200, max_genes=6,000, max_mt=15%)
-      </div>
-    </div>
-    <div class="card-body">
-      <figure class="figure">
-        <div class="figure-placeholder">
-          [QC scatter plots: mitochondrial fraction vs total counts, genes vs counts]
-        </div>
-        <figcaption class="figure-caption">Post-filtering QC showing clean separation of high-quality cells</figcaption>
-      </figure>
-      <div class="metric-row" style="margin-top: 20px;">
-        <div class="metric-header">
-          <span class="metric-name">Cells retained</span>
-          <span class="metric-value good">94,681 (94.6%)</span>
-        </div>
-        <div class="metric-bar-bg">
-          <div class="metric-bar-fill success" style="width: 94.6%;"></div>
-        </div>
+      <div class="image-grid">
+        <figure class="figure">
+          <img src="images/fig_qc_violin.png" alt="QC violin plots">
+          <figcaption class="figure-caption">Violin plots: total_counts, n_genes_by_counts, pct_counts_mt</figcaption>
+        </figure>
+        
+        <figure class="figure">
+          <img src="images/fig_qc_scatter.png" alt="QC scatter plots">
+          <figcaption class="figure-caption">QC scatter plots: mitochondrial fraction vs total counts, genes vs counts</figcaption>
+        </figure>
+        
+        <figure class="figure">
+          <img src="images/fig1b_qc_scatter.png" alt="QC scatter detailed">
+          <figcaption class="figure-caption">Figure 1b: Mitochondrial fraction vs total UMI counts with thresholds</figcaption>
+        </figure>
       </div>
     </div>
   </div>
@@ -1055,9 +1059,7 @@ footer {
       </div>
       <div class="card-body">
         <figure class="figure">
-          <div class="figure-placeholder">
-            [HVG dispersion vs mean expression plot]
-          </div>
+          <img src="images/fig_hvg.png" alt="HVG dispersion plot">
           <figcaption class="figure-caption">Highly variable gene selection (top 2,000, Seurat v3)</figcaption>
         </figure>
       </div>
@@ -1072,9 +1074,7 @@ footer {
       </div>
       <div class="card-body">
         <figure class="figure">
-          <div class="figure-placeholder">
-            [PCA variance ratio elbow plot]
-          </div>
+          <img src="images/fig_pca_variance.png" alt="PCA variance ratio">
           <figcaption class="figure-caption">PCA variance explained — elbow at PC 20-35 (30 PCs selected)</figcaption>
         </figure>
       </div>
@@ -1085,16 +1085,26 @@ footer {
     <div class="card-header">
       <div class="card-title">
         <span class="card-title-icon" style="background: #cffafe; color: #0891b2;">🗺️</span>
-        Full Atlas UMAP
+        Atlas Structure
       </div>
     </div>
     <div class="card-body">
-      <figure class="figure">
-        <div class="figure-placeholder">
-          [Full atlas UMAP with Leiden clusters (resolution=0.6)]
-        </div>
-        <figcaption class="figure-caption">15-22 Leiden clusters with clear separation of major cell types</figcaption>
-      </figure>
+      <div class="image-grid">
+        <figure class="figure">
+          <img src="images/fig_umap_leiden.png" alt="UMAP Leiden clusters">
+          <figcaption class="figure-caption">Figure 3a: UMAP coloured by Leiden cluster</figcaption>
+        </figure>
+        
+        <figure class="figure">
+          <img src="images/fig_deg_clusters.png" alt="DEG heatmap">
+          <figcaption class="figure-caption">Figure 3b: Top differentially expressed genes per cluster</figcaption>
+        </figure>
+        
+        <figure class="figure">
+          <img src="images/fig_marker_grid.png" alt="Marker gene grid">
+          <figcaption class="figure-caption">Figure 4: Canonical marker gene UMAP grid</figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </div>
@@ -1113,10 +1123,8 @@ footer {
       </div>
       <div class="card-body">
         <figure class="figure">
-          <div class="figure-placeholder">
-            [UMAP: T cell score overlay on full atlas]
-          </div>
-          <figcaption class="figure-caption">CD3D/CD3E/TRAC gene-set score and thresholded T cell mask</figcaption>
+          <img src="images/fig_tcell_score_overlay.png" alt="T cell score overlay">
+          <figcaption class="figure-caption">CD3D/CD3E/TRAC gene-set score overlay on full atlas</figcaption>
         </figure>
       </div>
     </div>
@@ -1130,10 +1138,8 @@ footer {
       </div>
       <div class="card-body">
         <figure class="figure">
-          <div class="figure-placeholder">
-            [UMAP: Re-embedded T cell sub-atlas with Leiden clusters]
-          </div>
-          <figcaption class="figure-caption">CD8 cytotoxic, CD4 helper, Treg, and exhausted populations</figcaption>
+          <img src="images/fig_tcell_umap.png" alt="T cell sub-atlas">
+          <figcaption class="figure-caption">Re-embedded T cell sub-atlas with distinct populations</figcaption>
         </figure>
       </div>
     </div>
@@ -1147,57 +1153,26 @@ footer {
       </div>
     </div>
     <div class="card-body">
-      <div class="grid-2">
+      <div class="image-grid">
         <figure class="figure">
-          <div class="figure-placeholder">
-            [Multi-panel UMAP: PDCD1, CD2, exhaustion_score, cytotoxic_score]
-          </div>
-          <figcaption class="figure-caption">PDCD1/CD2 expression and module scores on T cell sub-atlas</figcaption>
+          <img src="images/fig_umap_genes_scores.png" alt="Gene expression UMAP">
+          <figcaption class="figure-caption">Figure 6a: PDCD1, CD2 expression and module scores on T cell sub-atlas</figcaption>
         </figure>
+        
         <figure class="figure">
-          <div class="figure-placeholder">
-            [Three-panel UMAP: exhaustion, cytotoxicity, PDCD1/CD2 ratio]
-          </div>
-          <figcaption class="figure-caption">Inverse relation between exhaustion/ratio and cytotoxicity</figcaption>
+          <img src="images/fig_3panel_scores.png" alt="Three-panel UMAP">
+          <figcaption class="figure-caption">Figure 6b: Three-panel UMAP showing exhaustion, cytotoxicity, and PDCD1/CD2 ratio</figcaption>
         </figure>
-      </div>
-    </div>
-  </div>
-  
-  <div class="card">
-    <div class="card-header">
-      <div class="card-title">
-        <span class="card-title-icon" style="background: #dbeafe; color: #2563eb;">📊</span>
-        CD8 T Cell Stratification
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="metric-row">
-        <div class="metric-header">
-          <span class="metric-name">Total CD8 T cells</span>
-          <span class="metric-value">10,169</span>
-        </div>
-        <div class="metric-bar-bg">
-          <div class="metric-bar-fill accent" style="width: 33.4%;"></div>
-        </div>
-      </div>
-      <div class="metric-row">
-        <div class="metric-header">
-          <span class="metric-name">Exhausted CD8 (q=0.75)</span>
-          <span class="metric-value warning">2,543 (25.0%)</span>
-        </div>
-        <div class="metric-bar-bg">
-          <div class="metric-bar-fill warning" style="width: 25%;"></div>
-        </div>
-      </div>
-      <div class="metric-row">
-        <div class="metric-header">
-          <span class="metric-name">Non-exhausted CD8</span>
-          <span class="metric-value success">7,626 (75.0%)</span>
-        </div>
-        <div class="metric-bar-bg">
-          <div class="metric-bar-fill success" style="width: 75%;"></div>
-        </div>
+        
+        <figure class="figure">
+          <img src="images/fig_violin_scores.png" alt="Violin plots of scores">
+          <figcaption class="figure-caption">Figure 7a: Violin plots of scores by T cell sub-cluster</figcaption>
+        </figure>
+        
+        <figure class="figure">
+          <img src="images/fig_cd8_state.png" alt="CD8 state UMAP">
+          <figcaption class="figure-caption">Figure 7b: UMAP coloured by operational state (exhausted_CD8, non_exhausted_CD8)</figcaption>
+        </figure>
       </div>
     </div>
   </div>
@@ -1273,9 +1248,7 @@ footer {
     </div>
     <div class="card-body">
       <figure class="figure">
-        <div class="figure-placeholder">
-          [Violin plots: exhaustion score, cytotoxic score, PDCD1/CD2 ratio by T cell cluster]
-        </div>
+        <img src="images/fig_violin_scores.png" alt="Violin plots by cluster">
         <figcaption class="figure-caption">Module score distributions by T cell Leiden sub-cluster</figcaption>
       </figure>
     </div>
@@ -1325,26 +1298,19 @@ footer {
       </div>
       <div class="card-body">
         <figure class="figure">
-          <div class="figure-placeholder">
-            [KM curves: Survival by PDCD1/CD2 Axis (TCGA-BRCA)]
-          </div>
-          <figcaption class="figure-caption">High vs Low PDCD1/CD2 ratio — log-rank p&lt;0.05</figcaption>
+          <img src="images/fig_km_survival.png" alt="KM survival curves">
+          <figcaption class="figure-caption">Figure 8a: Kaplan-Meier overall survival curves stratified by median PDCD1/CD2 ratio</figcaption>
+        </figure>
+        
+        <figure class="figure" style="margin-top: 20px;">
+          <img src="images/fig_survival.png" alt="Survival analysis">
+          <figcaption class="figure-caption">Survival analysis with log-rank p-values annotated</figcaption>
         </figure>
         
         <div class="cox-stat">
           <div class="cox-label">Unadjusted Cox HR (PDCD1/CD2 ratio)</div>
           <div class="cox-value">HR = 0.47 (95% CI 0.28–0.79)</div>
           <div style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">p &lt; 0.005 · n=1,214 patients</div>
-        </div>
-        
-        <div class="cox-stat" style="border-left-color: var(--warning);">
-          <div class="cox-label">Exhaustion Score HR</div>
-          <div class="cox-value">HR = 1.42 (95% CI 1.08–1.87)</div>
-          <div style="font-size: 12px; color: var(--text-muted); margin-top: 8px;">p = 0.02 · directionally consistent</div>
-        </div>
-        
-        <div class="note">
-          <strong>Interpretation:</strong> HR &lt; 1.0 for PDCD1/CD2 ratio reflects immune infiltration (favorable) in bulk data, not per-cell exhaustion. Exhaustion signature shows HR≈1.4, consistent with poor prognosis.
         </div>
       </div>
     </div>
@@ -1358,17 +1324,13 @@ footer {
       </div>
       <div class="card-body">
         <figure class="figure">
-          <div class="figure-placeholder">
-            [Scatter: scRNA vs Bulk PDCD1/CD2 ratio correlation]
-          </div>
-          <figcaption class="figure-caption">Spearman ρ ≈ -0.30 (expected negative due to cell-type composition confound)</figcaption>
+          <img src="images/fig_lr_pd1.png" alt="PD-1/PD-L1 interactions">
+          <figcaption class="figure-caption">PD-1/PD-L1 interaction analysis</figcaption>
         </figure>
         
         <figure class="figure" style="margin-top: 20px;">
-          <div class="figure-placeholder">
-            [Scatter: scRNA vs Bulk exhaustion score correlation]
-          </div>
-          <figcaption class="figure-caption">Exhaustion score: Spearman ρ ≈ +0.28 (directionally consistent)</figcaption>
+          <img src="images/fig_lr_cd2.png" alt="CD2/CD58 interactions">
+          <figcaption class="figure-caption">CD2/CD58 interaction analysis</figcaption>
         </figure>
       </div>
     </div>
@@ -1431,12 +1393,17 @@ footer {
         </tbody>
       </table>
       
-      <figure class="figure" style="margin-top: 20px;">
-        <div class="figure-placeholder">
-          [LAG-3/HLA-DRA interaction heatmap]
-        </div>
-        <figcaption class="figure-caption">LAG-3/HLA-DRA: strongest interactions involve T-like compartments with myeloid and B-cell ligand sources</figcaption>
-      </figure>
+      <div class="image-grid" style="margin-top: 20px;">
+        <figure class="figure">
+          <img src="images/fig9a_lag3_hladra_heatmap.png" alt="LAG-3/HLA-DRA heatmap">
+          <figcaption class="figure-caption">Figure 9a: LAG-3/HLA-DRA interaction heatmap</figcaption>
+        </figure>
+        
+        <figure class="figure">
+          <img src="images/fig9b_lag3_hladra_ligand_sources.png" alt="LAG-3 ligand sources">
+          <figcaption class="figure-caption">Figure 9b: Ligand source contributions for LAG-3/HLA-DRA</figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </div>
@@ -1478,23 +1445,6 @@ footer {
     <div class="card-header">
       <div class="card-title">
         <span class="card-title-icon" style="background: #d1fae5; color: #059669;">📊</span>
-        Bootstrap Distribution by Patient
-      </div>
-    </div>
-    <div class="card-body">
-      <figure class="figure">
-        <div class="figure-placeholder">
-          [Bootstrap score distributions for top 10 patients]
-        </div>
-        <figcaption class="figure-caption">CID44971, CID44972, CID4495 show highest stability (100% top-quartile retention)</figcaption>
-      </figure>
-    </div>
-  </div>
-  
-  <div class="card">
-    <div class="card-header">
-      <div class="card-title">
-        <span class="card-title-icon" style="background: #dbeafe; color: #2563eb;">📋</span>
         Patient Ranking Stability
       </div>
     </div>
@@ -1643,9 +1593,11 @@ function showTab(tabId, btn) {
 
 // Set first tab as active by default
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.tab').forEach((tab, index) => {
-    if (index === 0) tab.classList.add('active');
-  });
+  // Ensure first tab is active
+  const firstTab = document.getElementById('tab-overview');
+  if (firstTab) {
+    firstTab.classList.add('active');
+  }
 });
 </script>
 

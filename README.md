@@ -44,6 +44,8 @@ tnbc-pdcd1-cd2-scrna-pipeline/
 │
 ├── GSE176078.zip            # Full analysis notebook with all outputs
 │                            # and figures (extract to get GSE176078.ipynb)
+├── GSE176078_revised.zip    # Updated code based on reviewer feedback
+│                            # and figures (extract to get GSE176078_revised.ipynb)
 ├── tnbc_dashboard.html      # Interactive results dashboard
 ├── README.md
 ├── LICENSE                  # MIT
@@ -132,7 +134,7 @@ pip install scanpy==1.9.8 anndata==0.9.2 leidenalg igraph \
 
 ## Usage
 
-1. Clone this repository or download `GSE176078.zip` directly
+1. Clone this repository or download `GSE176078_revised.zip` directly
 
 ```bash
 git clone https://github.com/chykoushik/tnbc-pdcd1-cd2-scrna-pipeline.git
@@ -141,7 +143,7 @@ git clone https://github.com/chykoushik/tnbc-pdcd1-cd2-scrna-pipeline.git
 2. Unzip the notebook
 
 ```bash
-unzip GSE176078.zip
+unzip GSE176078_revised.zip
 ```
 
 3. Download GSE176078 files from NCBI GEO into

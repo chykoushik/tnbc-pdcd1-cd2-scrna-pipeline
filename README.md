@@ -2,7 +2,7 @@
 
 Computational pipeline for the paper:
 
-> **Computational Stratification and Engineering Translation of the
+> **Computational Stratification and Engineering Framework of the
 > PDCD1/CD2 Immune Axis in Triple-Negative Breast Cancer**
 > Koushik Chowdhury, M.Sc. — Universität des Saarlandes
 
